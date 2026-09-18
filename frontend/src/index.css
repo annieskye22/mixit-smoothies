@@ -1,0 +1,16 @@
+@import 'tailwindcss';
+@theme inline {
+  --color-background: var(--background); --color-foreground: var(--foreground);
+  --color-card: var(--card); --color-card-foreground: var(--foreground);
+  --color-primary: var(--primary); --color-primary-foreground: #ffffff;
+  --color-muted: #ecf0e8; --color-muted-foreground: #61705f;
+  --color-input: #d7ded0; --color-border: #dce2d6; --color-ring: #4a865f;
+}
+:root { --background: #f8f9f3; --foreground: #173b2b; --card: #fff; --primary: #22593c; font-family: 'Segoe UI', system-ui, sans-serif; color: var(--foreground); background: var(--background); font-synthesis: none; }
+* { border-color: var(--color-border); }
+body { margin: 0; min-width: 320px; }
+button, a { -webkit-tap-highlight-color: transparent; }
+button:not(:disabled), a { cursor: pointer; }
+::selection { background: #dcebb0; }
+.display { font-family: Georgia, 'Times New Roman', serif; }
+.field { display: grid; gap: .5rem; font-size: .875rem; font-weight: 600; }

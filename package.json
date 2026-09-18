@@ -1,0 +1,16 @@
+{
+  "name": "mixit-smoothies",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": ["backend", "frontend"],
+  "engines": { "node": ">=22.22.2" },
+  "scripts": {
+    "dev": "concurrently -n api,web -c yellow,green \"npm run dev -w backend\" \"npm run dev -w frontend\"",
+    "build": "npm run build --workspaces",
+    "test": "npm run test --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces",
+    "test:contract": "cargo test --manifest-path contract/Cargo.toml",
+    "build:contract": "cargo near build non-reproducible-wasm --manifest-path contract/Cargo.toml"
+  },
+  "devDependencies": { "concurrently": "^9.2.0" }
+}

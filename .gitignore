@@ -1,0 +1,11 @@
+node_modules/
+dist/
+target/
+.env
+.env.*
+!.env.example
+coverage/
+*.wasm
+.DS_Store
+*.log
+*.tsbuildinfo
