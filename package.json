@@ -10,6 +10,7 @@
     "test": "npm run test --workspaces --if-present",
     "typecheck": "npm run typecheck --workspaces",
     "test:contract": "cargo test --manifest-path contract/Cargo.toml",
+    "test:live": "node scripts/test-live.mjs",
     "build:contract": "cargo near build non-reproducible-wasm --manifest-path contract/Cargo.toml"
   },
   "devDependencies": { "concurrently": "^9.2.0" }

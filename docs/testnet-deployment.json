@@ -1,0 +1,17 @@
+{
+  "account_id": "lil-akirabear.testnet",
+  "network": "testnet",
+  "rpc_url": "https://test.rpc.fastnear.com",
+  "source_commit": "fb1f6f10d30c263da7d8a874f535109e6be58739",
+  "ci_run": 35486066121,
+  "wasm_sha256": "2d32688d103f855d4d28915ebdbcc10eee2008990f1583b557b7703d67f10283",
+  "wasm_bytes": 147062,
+  "code_hash": "43RvpGskEtvEgerTWoQu2Lbk8PqBEAe3SuYS2Z4YXewL",
+  "transaction_hash": "FddhPoMaLtWG1T8gVqaKAd3rGf144b8gvFPvy1u9eFiS",
+  "verified_at": "2026-09-20T03:23:50.880Z",
+  "owner_role": "Producer",
+  "owner_role_transaction": "FeHKxU3Lu555YHCp3LBxhv5oJSn9uTebpsDsB7j3zMD8",
+  "temporary_key_revoked": true,
+  "revocation_transaction": "AKdp55DKrbxpadHJqUtbUzC76poC4XpzQFcQRs2xFPmV",
+  "revoked_public_key": "ed25519:9Y6X21WSRHpBJPamgpaqguQwrKq2ZixK21wMnUcHKq7V"
+}

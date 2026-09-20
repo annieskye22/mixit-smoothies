@@ -77,3 +77,8 @@ The old `rpc.testnet.near.org` endpoint now rejects requests as deprecated. Defa
 CI installs the checksum-verified cargo-near 0.22.0 release binary instead of compiling its entire CLI dependency tree. A successful run uploads the WASM and resolved Cargo.lock as the `mixit-contract` artifact. Download that artifact from the matching GitHub Actions run before deploying. The artifact belongs to the run's commit; do not mix it with a different source revision.
 
 See also the official [cargo-near documentation](https://github.com/near/cargo-near).
+## Current testnet deployment
+
+The verified contract is deployed at `lil-akirabear.testnet`; use `NEAR_NETWORK=testnet`, `NEAR_CONTRACT_ID=lil-akirabear.testnet` and `NEAR_RPC_URL=https://test.rpc.fastnear.com` in `backend/.env`. See [verification evidence](VERIFICATION.md) for transaction hashes and live test results. Do not rerun initialization on this account.
+
+For a local production preview after `npm run build`, start the API with `npm run start -w backend`, then run `npm run preview -w frontend -- --host 127.0.0.1 --port 4173`. The preview proxies `/api` to port 3001. Use `CORS_ORIGIN=http://127.0.0.1:4173` for this preview. This is a local preview, not public hosting.

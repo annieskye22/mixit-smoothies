@@ -1,0 +1,341 @@
+{
+  "network": "testnet",
+  "contract": "lil-akirabear.testnet",
+  "rpc": "https://test.rpc.fastnear.com",
+  "run": "mu995h55",
+  "started_at": "2026-09-20T03:24:07.817Z",
+  "checks": [
+    "Create producer (0.25 test NEAR)",
+    "Assign producer",
+    "Create distributor (0.25 test NEAR)",
+    "Assign distributor",
+    "Create retailer (0.25 test NEAR)",
+    "Assign retailer",
+    "Reject non-owner role assignment",
+    "Reject unauthorized registration",
+    "Reject insufficient deposit",
+    "Failed registration leaves no batch",
+    "API-prepared registration succeeds on chain",
+    "Reject duplicate registration",
+    "Reject skipped distributor",
+    "Reject non-custodian",
+    "Revoke producer",
+    "Reject revoked custodian",
+    "Restore producer",
+    "API-prepared distributor handoff succeeds",
+    "API-prepared retailer handoff succeeds",
+    "Reject transfer beyond retailer",
+    "Finalized API history contains exactly three ordered custody events",
+    "Current status and custodian match completed trail",
+    "History pagination",
+    "API distinguishes finalized success and contract failure",
+    "Indexable logs match registration and handoffs",
+    "API rejects invalid and missing batch IDs"
+  ],
+  "transactions": [
+    {
+      "label": "Create producer (0.25 test NEAR)",
+      "hash": "9o6bcPokwhJcMX8Qqg5tFASrSibCVDhFZ5dehntznkDg",
+      "signer": "lil-akirabear.testnet",
+      "status": {
+        "SuccessValue": ""
+      },
+      "logs": []
+    },
+    {
+      "label": "Assign producer",
+      "hash": "68njKoJG2w7u6sAz23hRczVCVJSrJKWFUAMeT5BPCrkF",
+      "signer": "lil-akirabear.testnet",
+      "status": {
+        "SuccessValue": ""
+      },
+      "logs": [
+        "EVENT_JSON:{\"standard\":\"mixit_trace\",\"version\":\"1.0.0\",\"event\":\"role_assigned\",\"data\":[{\"actor\":\"lil-akirabear.testnet\",\"account_id\":\"p-mu995h55.lil-akirabear.testnet\",\"role\":\"Producer\",\"timestamp_ns\":\"1789874652800737885\"}]}"
+      ]
+    },
+    {
+      "label": "Create distributor (0.25 test NEAR)",
+      "hash": "ErLNxUBLZs56GdHKVnewUQ1KCPZFteaPzdoYtiy13Gbp",
+      "signer": "lil-akirabear.testnet",
+      "status": {
+        "SuccessValue": ""
+      },
+      "logs": []
+    },
+    {
+      "label": "Assign distributor",
+      "hash": "G7yAYtZRJDEjrkHeoGKwt58VaKms8arXCDfoyZKihHW7",
+      "signer": "lil-akirabear.testnet",
+      "status": {
+        "SuccessValue": ""
+      },
+      "logs": [
+        "EVENT_JSON:{\"standard\":\"mixit_trace\",\"version\":\"1.0.0\",\"event\":\"role_assigned\",\"data\":[{\"actor\":\"lil-akirabear.testnet\",\"account_id\":\"d-mu995h55.lil-akirabear.testnet\",\"role\":\"Distributor\",\"timestamp_ns\":\"1789874660567928970\"}]}"
+      ]
+    },
+    {
+      "label": "Create retailer (0.25 test NEAR)",
+      "hash": "qyZBBixYw8bWneJxvqNcyx2oab8aDSJFfvXtB7SPBRw",
+      "signer": "lil-akirabear.testnet",
+      "status": {
+        "SuccessValue": ""
+      },
+      "logs": []
+    },
+    {
+      "label": "Assign retailer",
+      "hash": "3DL6hcEUS6X1RoNsxrCy7QFqzUXtssFndCtZqSiQgc6t",
+      "signer": "lil-akirabear.testnet",
+      "status": {
+        "SuccessValue": ""
+      },
+      "logs": [
+        "EVENT_JSON:{\"standard\":\"mixit_trace\",\"version\":\"1.0.0\",\"event\":\"role_assigned\",\"data\":[{\"actor\":\"lil-akirabear.testnet\",\"account_id\":\"r-mu995h55.lil-akirabear.testnet\",\"role\":\"Retailer\",\"timestamp_ns\":\"1789874667676037672\"}]}"
+      ]
+    },
+    {
+      "label": "Reject non-owner role assignment",
+      "hash": "GbJAx2vCvAnhpnZrJMKHrr7m5hyr3yERwG2742tf4ByR",
+      "signer": "d-mu995h55.lil-akirabear.testnet",
+      "status": {
+        "Failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "ExecutionError": "Smart contract panicked: Only owner can assign roles"
+              }
+            }
+          }
+        }
+      },
+      "logs": []
+    },
+    {
+      "label": "Reject unauthorized registration",
+      "hash": "BoPQuvTun3ZiqL8JZM7ZMPPA8VstJPCydoyBiRiTWMwB",
+      "signer": "r-mu995h55.lil-akirabear.testnet",
+      "status": {
+        "Failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "ExecutionError": "Smart contract panicked: Producer role required"
+              }
+            }
+          }
+        }
+      },
+      "logs": []
+    },
+    {
+      "label": "Reject insufficient deposit",
+      "hash": "EMojFDoh46WmZBAmzYFsgiCvyZiaFYfEzCRTeQDvYezm",
+      "signer": "p-mu995h55.lil-akirabear.testnet",
+      "status": {
+        "Failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "ExecutionError": "Smart contract panicked: Insufficient storage deposit"
+              }
+            }
+          }
+        }
+      },
+      "logs": []
+    },
+    {
+      "label": "API-prepared registration succeeds on chain",
+      "hash": "8E4dMDQ1iKQfsBHEgcMN1xdXWVcf5ykvDD8hd23CXG47",
+      "signer": "p-mu995h55.lil-akirabear.testnet",
+      "status": {
+        "SuccessValue": "eyJiYXRjaF9pZCI6InAtbXU5OTVoNTUubGlsLWFraXJhYmVhci50ZXN0bmV0OmxpdmUtbXU5OTVoNTUiLCJwcm9kdWN0X25hbWUiOiJNaXhpdCB0ZXN0bmV0IGFjY2VwdGFuY2Ugc21vb3RoaWUiLCJwcm9kdWNlciI6InAtbXU5OTVoNTUubGlsLWFraXJhYmVhci50ZXN0bmV0IiwiY3VzdG9kaWFuIjoicC1tdTk5NWg1NS5saWwtYWtpcmFiZWFyLnRlc3RuZXQiLCJjdXN0b2RpYW5fcm9sZSI6IlByb2R1Y2VyIiwic3RhdHVzIjoiUmVnaXN0ZXJlZCIsIm1ldGFkYXRhX3VyaSI6bnVsbCwibWV0YWRhdGFfc2hhMjU2IjpudWxsLCJjcmVhdGVkX2F0X25zIjoiMTc4OTg3NDY4NTEzMzcyNzUzNyIsImhpc3RvcnlfY291bnQiOjF9"
+      },
+      "logs": [
+        "EVENT_JSON:{\"standard\":\"mixit_trace\",\"version\":\"1.0.0\",\"event\":\"batch_registered\",\"data\":[{\"index\":0,\"batch_id\":\"p-mu995h55.lil-akirabear.testnet:live-mu995h55\",\"actor\":\"p-mu995h55.lil-akirabear.testnet\",\"from\":null,\"to\":\"p-mu995h55.lil-akirabear.testnet\",\"to_role\":\"Producer\",\"timestamp_ns\":\"1789874685133727537\",\"status\":\"Registered\"}]}"
+      ]
+    },
+    {
+      "label": "Reject duplicate registration",
+      "hash": "9QVVATNHrn32ThJ66pYdNWtuizrVbynsGoCTwCPjSk37",
+      "signer": "p-mu995h55.lil-akirabear.testnet",
+      "status": {
+        "Failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "ExecutionError": "Smart contract panicked: Batch already exists"
+              }
+            }
+          }
+        }
+      },
+      "logs": []
+    },
+    {
+      "label": "Reject skipped distributor",
+      "hash": "AsacuWaBfxGZUCVh1pjD5MPtthfTytxMLKyfCxUHBHWs",
+      "signer": "p-mu995h55.lil-akirabear.testnet",
+      "status": {
+        "Failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "ExecutionError": "Smart contract panicked: Recipient has wrong role"
+              }
+            }
+          }
+        }
+      },
+      "logs": []
+    },
+    {
+      "label": "Reject non-custodian",
+      "hash": "F4JHv933M29vQud5DvZXQscyqJCih8sjYPFuPyG1Z2JR",
+      "signer": "r-mu995h55.lil-akirabear.testnet",
+      "status": {
+        "Failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "ExecutionError": "Smart contract panicked: Only current custodian can transfer"
+              }
+            }
+          }
+        }
+      },
+      "logs": []
+    },
+    {
+      "label": "Revoke producer",
+      "hash": "EY4LCkYqvgj4HpXpR1nyMDTLZcPCofTyMn1fD18NVYRo",
+      "signer": "lil-akirabear.testnet",
+      "status": {
+        "SuccessValue": ""
+      },
+      "logs": [
+        "EVENT_JSON:{\"standard\":\"mixit_trace\",\"version\":\"1.0.0\",\"event\":\"role_assigned\",\"data\":[{\"actor\":\"lil-akirabear.testnet\",\"account_id\":\"p-mu995h55.lil-akirabear.testnet\",\"role\":\"Consumer\",\"timestamp_ns\":\"1789874700713416255\"}]}"
+      ]
+    },
+    {
+      "label": "Reject revoked custodian",
+      "hash": "Akr39GbyhJ871k3zPLrL5RWqsufhjqYdrWV1qRMGy5uf",
+      "signer": "p-mu995h55.lil-akirabear.testnet",
+      "status": {
+        "Failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "ExecutionError": "Smart contract panicked: Custodian role revoked or changed"
+              }
+            }
+          }
+        }
+      },
+      "logs": []
+    },
+    {
+      "label": "Restore producer",
+      "hash": "GWi7BuBvEiJYDFc4RUKsgxiMihARYhNUJZCyKsXFfY5C",
+      "signer": "lil-akirabear.testnet",
+      "status": {
+        "SuccessValue": ""
+      },
+      "logs": [
+        "EVENT_JSON:{\"standard\":\"mixit_trace\",\"version\":\"1.0.0\",\"event\":\"role_assigned\",\"data\":[{\"actor\":\"lil-akirabear.testnet\",\"account_id\":\"p-mu995h55.lil-akirabear.testnet\",\"role\":\"Producer\",\"timestamp_ns\":\"1789874720933705162\"}]}"
+      ]
+    },
+    {
+      "label": "API-prepared distributor handoff succeeds",
+      "hash": "9xRmx6JjVjWTSwjLNPMLiEmLXjzdhbMsg5x2XNsZXEZf",
+      "signer": "p-mu995h55.lil-akirabear.testnet",
+      "status": {
+        "SuccessValue": "eyJiYXRjaF9pZCI6InAtbXU5OTVoNTUubGlsLWFraXJhYmVhci50ZXN0bmV0OmxpdmUtbXU5OTVoNTUiLCJwcm9kdWN0X25hbWUiOiJNaXhpdCB0ZXN0bmV0IGFjY2VwdGFuY2Ugc21vb3RoaWUiLCJwcm9kdWNlciI6InAtbXU5OTVoNTUubGlsLWFraXJhYmVhci50ZXN0bmV0IiwiY3VzdG9kaWFuIjoiZC1tdTk5NWg1NS5saWwtYWtpcmFiZWFyLnRlc3RuZXQiLCJjdXN0b2RpYW5fcm9sZSI6IkRpc3RyaWJ1dG9yIiwic3RhdHVzIjoiSW5EaXN0cmlidXRpb24iLCJtZXRhZGF0YV91cmkiOm51bGwsIm1ldGFkYXRhX3NoYTI1NiI6bnVsbCwiY3JlYXRlZF9hdF9ucyI6IjE3ODk4NzQ2ODUxMzM3Mjc1MzciLCJoaXN0b3J5X2NvdW50IjoyfQ=="
+      },
+      "logs": [
+        "EVENT_JSON:{\"standard\":\"mixit_trace\",\"version\":\"1.0.0\",\"event\":\"custody_transferred\",\"data\":[{\"index\":1,\"batch_id\":\"p-mu995h55.lil-akirabear.testnet:live-mu995h55\",\"actor\":\"p-mu995h55.lil-akirabear.testnet\",\"from\":\"p-mu995h55.lil-akirabear.testnet\",\"to\":\"d-mu995h55.lil-akirabear.testnet\",\"to_role\":\"Distributor\",\"timestamp_ns\":\"1789874725705420545\",\"status\":\"InDistribution\"}]}"
+      ]
+    },
+    {
+      "label": "API-prepared retailer handoff succeeds",
+      "hash": "6hgXsaynLsejgBimY1fy7MLWDCCyztagZmam3GQC6vWq",
+      "signer": "d-mu995h55.lil-akirabear.testnet",
+      "status": {
+        "SuccessValue": "eyJiYXRjaF9pZCI6InAtbXU5OTVoNTUubGlsLWFraXJhYmVhci50ZXN0bmV0OmxpdmUtbXU5OTVoNTUiLCJwcm9kdWN0X25hbWUiOiJNaXhpdCB0ZXN0bmV0IGFjY2VwdGFuY2Ugc21vb3RoaWUiLCJwcm9kdWNlciI6InAtbXU5OTVoNTUubGlsLWFraXJhYmVhci50ZXN0bmV0IiwiY3VzdG9kaWFuIjoici1tdTk5NWg1NS5saWwtYWtpcmFiZWFyLnRlc3RuZXQiLCJjdXN0b2RpYW5fcm9sZSI6IlJldGFpbGVyIiwic3RhdHVzIjoiQXRSZXRhaWxlciIsIm1ldGFkYXRhX3VyaSI6bnVsbCwibWV0YWRhdGFfc2hhMjU2IjpudWxsLCJjcmVhdGVkX2F0X25zIjoiMTc4OTg3NDY4NTEzMzcyNzUzNyIsImhpc3RvcnlfY291bnQiOjN9"
+      },
+      "logs": [
+        "EVENT_JSON:{\"standard\":\"mixit_trace\",\"version\":\"1.0.0\",\"event\":\"custody_transferred\",\"data\":[{\"index\":2,\"batch_id\":\"p-mu995h55.lil-akirabear.testnet:live-mu995h55\",\"actor\":\"d-mu995h55.lil-akirabear.testnet\",\"from\":\"d-mu995h55.lil-akirabear.testnet\",\"to\":\"r-mu995h55.lil-akirabear.testnet\",\"to_role\":\"Retailer\",\"timestamp_ns\":\"1789874730009988193\",\"status\":\"AtRetailer\"}]}"
+      ]
+    },
+    {
+      "label": "Reject transfer beyond retailer",
+      "hash": "2VhNeFkJ3YptxxAUqveaLTkUMajkqDVStTZZZr89xUwB",
+      "signer": "r-mu995h55.lil-akirabear.testnet",
+      "status": {
+        "Failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "ExecutionError": "Smart contract panicked: Retail custody is terminal"
+              }
+            }
+          }
+        }
+      },
+      "logs": []
+    }
+  ],
+  "passed": true,
+  "participants": {
+    "producer": "p-mu995h55.lil-akirabear.testnet",
+    "distributor": "d-mu995h55.lil-akirabear.testnet",
+    "retailer": "r-mu995h55.lil-akirabear.testnet"
+  },
+  "batch_id": "p-mu995h55.lil-akirabear.testnet:live-mu995h55",
+  "registration_hash": "8E4dMDQ1iKQfsBHEgcMN1xdXWVcf5ykvDD8hd23CXG47",
+  "final_block": {
+    "hash": "Ajx9Lq4i6rm4uYzagXG9dyNwMD2qugkU7qHNepfYJ5y6",
+    "height": 269383659
+  },
+  "history": [
+    {
+      "index": 0,
+      "batch_id": "p-mu995h55.lil-akirabear.testnet:live-mu995h55",
+      "actor": "p-mu995h55.lil-akirabear.testnet",
+      "from": null,
+      "to": "p-mu995h55.lil-akirabear.testnet",
+      "to_role": "Producer",
+      "timestamp_ns": "1789874685133727537",
+      "status": "Registered"
+    },
+    {
+      "index": 1,
+      "batch_id": "p-mu995h55.lil-akirabear.testnet:live-mu995h55",
+      "actor": "p-mu995h55.lil-akirabear.testnet",
+      "from": "p-mu995h55.lil-akirabear.testnet",
+      "to": "d-mu995h55.lil-akirabear.testnet",
+      "to_role": "Distributor",
+      "timestamp_ns": "1789874725705420545",
+      "status": "InDistribution"
+    },
+    {
+      "index": 2,
+      "batch_id": "p-mu995h55.lil-akirabear.testnet:live-mu995h55",
+      "actor": "d-mu995h55.lil-akirabear.testnet",
+      "from": "d-mu995h55.lil-akirabear.testnet",
+      "to": "r-mu995h55.lil-akirabear.testnet",
+      "to_role": "Retailer",
+      "timestamp_ns": "1789874730009988193",
+      "status": "AtRetailer"
+    }
+  ],
+  "completed_at": "2026-09-20T03:25:38.880Z"
+}
