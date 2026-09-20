@@ -26,5 +26,26 @@ jobs:
         with:
           workspaces: contract
       - run: cargo test --manifest-path contract/Cargo.toml
-      - run: cargo install cargo-near --locked
+      - name: Install verified cargo-near release
+        env:
+          CARGO_NEAR_TAG: cargo-near-v0.22.0
+        run: |
+          mkdir -p "$RUNNER_TEMP/cargo-near"
+          cd "$RUNNER_TEMP/cargo-near"
+          asset=cargo-near-x86_64-unknown-linux-gnu.tar.gz
+          base="https://github.com/near/cargo-near/releases/download/$CARGO_NEAR_TAG"
+          curl --fail --location --retry 3 "$base/$asset" --output "$asset"
+          curl --fail --location --retry 3 "$base/$asset.sha256" --output "$asset.sha256"
+          sha256sum --check "$asset.sha256"
+          tar -xzf "$asset"
+          install -m 755 "$(find . -type f -name cargo-near -print -quit)" "$HOME/.cargo/bin/cargo-near"
+          cargo near --version
       - run: npm run build:contract
+      - name: Save deployable contract
+        uses: actions/upload-artifact@v4
+        with:
+          name: mixit-contract
+          if-no-files-found: error
+          path: |
+            contract/target/near/*.wasm
+            contract/Cargo.lock

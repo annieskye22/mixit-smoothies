@@ -51,7 +51,7 @@ Copy `.env.example` files and set:
 # backend/.env
 NEAR_NETWORK=testnet
 NEAR_CONTRACT_ID=mixit.yourname.testnet
-NEAR_RPC_URL=https://rpc.testnet.near.org
+NEAR_RPC_URL=https://test.rpc.fastnear.com
 CORS_ORIGIN=http://localhost:5173
 PORT=3001
 ```
@@ -71,5 +71,9 @@ Bind the API behind an appropriate reverse proxy; configure Express trust-proxy 
 - Measure gas, storage, finality, and failure behavior on representative batches.
 - Deploy to a funded dedicated `.near` account/subaccount with atomic initialization. Use production owner/participant accounts, RPC and origins; set `NEAR_NETWORK=mainnet`. Never point the testnet UI at mainnet by changing only its label.
 - Re-onboard roles and register new records. Testnet data does not migrate automatically and should not be represented as mainnet evidence.
+
+The old `rpc.testnet.near.org` endpoint now rejects requests as deprecated. Defaults use the public FASTNEAR endpoints listed in the [NEAR RPC provider documentation](https://docs.near.org/api/rpc/providers). Override `NEAR_RPC_URL` for your chosen provider.
+
+CI installs the checksum-verified cargo-near 0.22.0 release binary instead of compiling its entire CLI dependency tree. A successful run uploads the WASM and resolved Cargo.lock as the `mixit-contract` artifact. Download that artifact from the matching GitHub Actions run before deploying. The artifact belongs to the run's commit; do not mix it with a different source revision.
 
 See also the official [cargo-near documentation](https://github.com/near/cargo-near).

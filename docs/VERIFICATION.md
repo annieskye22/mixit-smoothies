@@ -26,4 +26,8 @@ The final frontend build still reports a large JavaScript chunk (about 1.56 MB b
 
 No chain state was created or changed. A placeholder contract ID was used only in a temporary local process environment during the unsuccessful development-server smoke attempt. It is not a deployed project account and is not saved as application configuration.
 
-CI contains Rust tests and a WASM build, but has not been run on a remote runner. Add and execute the sandbox and testnet acceptance tests in [EVALUATION.md](EVALUATION.md) before calling the system end-to-end verified.
+## Subsequent GitHub verification
+
+The initial [GitHub Actions run](https://github.com/annieskye22/mixit-smoothies/actions/runs/35359155757) ran all 13 Rust tests successfully, as well as all 20 JavaScript tests, type checks and JavaScript production builds under Node 22. Its WASM build did not start because compiling cargo-near from source failed on missing `libudev` headers. CI now installs a pinned, checksum-verified cargo-near release binary and uploads the deployable WASM after a successful build.
+
+The public account `lil-akirabear.testnet` was subsequently confirmed on testnet with approximately 10 testnet NEAR and no deployed contract. This confirms account existence and funding, not deployment authorization or contract deployment. Add and execute the sandbox and testnet acceptance tests in [EVALUATION.md](EVALUATION.md) before calling the system end-to-end verified.
