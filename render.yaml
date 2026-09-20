@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: mixit-smoothies
+    runtime: node
+    plan: free
+    branch: main
+    buildCommand: npm ci --include=dev && npm run build
+    startCommand: npm run start -w backend
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: 22.22.2
+      - key: NODE_ENV
+        value: production
+      - key: NEAR_NETWORK
+        value: testnet
+      - key: NEAR_CONTRACT_ID
+        value: lil-akirabear.testnet
+      - key: NEAR_RPC_URL
+        value: https://test.rpc.fastnear.com
+      - key: SERVE_FRONTEND
+        value: "true"
+      - key: TRUST_PROXY_HOPS
+        value: "1"

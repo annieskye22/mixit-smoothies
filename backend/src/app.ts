@@ -5,12 +5,17 @@ import { rateLimit } from 'express-rate-limit';
 import { z } from 'zod';
 import { accountId, batchId, registration, transfer, pagination, type Batch, type Role } from './schema.js';
 import type { Chain } from './near.js';
+import { join } from 'node:path';
 
 class HttpError extends Error { constructor(public status: number, public code: string, message: string) { super(message); } }
-export interface Config { contractId: string; network: 'testnet' | 'mainnet'; origin: string }
+export interface Config { contractId: string; network: 'testnet' | 'mainnet'; origin: string; frontendDir?: string; trustProxyHops?: number }
 export function createApp(chain: Chain, config: Config) {
   const app = express();
-  app.use(helmet(), cors({ origin: config.origin }), express.json({ limit: '16kb' }));
+  app.set('trust proxy', config.trustProxyHops ?? 0);
+  app.use(helmet({ contentSecurityPolicy: { directives: {
+    connectSrc: ["'self'", config.network === 'testnet' ? 'https://test.rpc.fastnear.com' : 'https://free.rpc.fastnear.com'],
+    mediaSrc: ["'self'", 'blob:'],
+  } } }), cors({ origin: config.origin }), express.json({ limit: '16kb' }));
   app.use('/api', rateLimit({ windowMs: 60_000, limit: 120, standardHeaders: 'draft-8', legacyHeaders: false }));
   app.get('/api/health', (_req, res) => res.json({ status: 'ok', network: config.network, contract_id: config.contractId }));
   app.get('/api/config', (_req, res) => res.json({ network: config.network, contract_id: config.contractId }));
@@ -81,6 +86,10 @@ export function createApp(chain: Chain, config: Config) {
       throw error;
     }
   });
+  if (config.frontendDir) {
+    app.use(express.static(config.frontendDir, { index: false }));
+    app.get('/', (_req, res) => res.sendFile(join(config.frontendDir!, 'index.html'), { headers: { 'Cache-Control': 'no-cache' } }));
+  }
   app.use((_req, res) => res.status(404).json({ error: { code: 'NOT_FOUND', message: 'Endpoint not found.' } }));
   const errors: ErrorRequestHandler = (err, _req, res, _next) => {
     if (err instanceof z.ZodError) return void res.status(400).json({ error: { code: 'INVALID_INPUT', message: 'Invalid request.', details: err.issues } });

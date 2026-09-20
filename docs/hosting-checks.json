@@ -1,0 +1,11 @@
+{
+  "verified_at": "2026-09-20T04:21:28.923Z",
+  "environment": "local production server; public hosting pending",
+  "checks": [
+    "Home page, batch deep link, production JS and CSP",
+    "Same-origin API config and real finalized testnet history",
+    "Missing API/assets and private configuration paths return 404",
+    "Configured public origin and proxy headers accepted"
+  ],
+  "final_block": 269389631
+}

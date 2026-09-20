@@ -2,6 +2,10 @@
 
 A NEAR beverage traceability scaffold: producers register batches, distributors receive and transfer them, retailers hold the final custody record, and consumers verify the trail without connecting a wallet.
 
+The contract is deployed on testnet at `lil-akirabear.testnet`; [verification evidence](docs/VERIFICATION.md) includes 26 successful live checks. For public website hosting, use the [Render deployment guide](docs/HOSTING.md).
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/annieskye22/mixit-smoothies)
+
 ## Structure
 
 ```text
